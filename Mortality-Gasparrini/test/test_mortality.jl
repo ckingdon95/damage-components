@@ -20,11 +20,11 @@ addcomponent(m, Mortality)
 setparameter(m, :Mortality, :daily_mean_temp, load_daily_temps(length(getindexvalues(m, :days))))
 setparameter(m, :Mortality, :optimal_mort, 100*ones(9))
 
-cubic_params = readcsv("data/cubic_parameters.csv")[2:end,2:end]
-setparameter(m, :Mortality, :a, cubic_params[:,1])
-setparameter(m, :Mortality, :b, cubic_params[:,2])
-setparameter(m, :Mortality, :c, cubic_params[:,3])
-setparameter(m, :Mortality, :d, cubic_params[:,4])
+cubic_coeffs = readcsv("data/cubic_coefficients.csv")[2:end,2:end]
+setparameter(m, :Mortality, :a, cubic_coeffs[:,1])
+setparameter(m, :Mortality, :b, cubic_coeffs[:,2])
+setparameter(m, :Mortality, :c, cubic_coeffs[:,3])
+setparameter(m, :Mortality, :d, cubic_coeffs[:,4])
 
 setparameter(m, :Mortality, :vsl, ones(5,9))
 
