@@ -23,6 +23,7 @@ level for number of deaths.
 
 ## Outstanding questions
 
-- is the step from excess mortality (in percent) to total number of deaths done correctly?
-- should the optimal number of deaths scale with population growth?
-- do we incorporate adaptation?
+- Is the step from excess mortality (in percent) to total number of deaths done correctly? deaths = RR x (expected # of deaths under optimal temperature)
+- How do we get the expected number of deaths under optimal temperature for each region, and should it scale with population growth?
+- Related to the above two, is this the correct formula for economic valuation: econ_damages = (number of deaths) x (vsl) ? Or is there a way to go from excess mortality (in % above optimal mortality) to economic damages?
+- How can adaptation be incorporated?
