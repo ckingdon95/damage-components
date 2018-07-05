@@ -1,3 +1,13 @@
+## Notes on current version
+
+You can run the component with "test/test_mortality.jl". This will run the component with the following made up data:
+- Daily temperatures are loaded from src/data_helper.jl
+- Cubic coefficients are defined in data/cubic_coefficients.csv
+- Optimal mortality values are all set to 100, in data/opt_mortality.csv
+- VSL values are set to 1, in data/vsl.csv
+- a time index of 2010:10:2050
+
+
 ## Notes on needed inputs
 
 Internal model parameters:
