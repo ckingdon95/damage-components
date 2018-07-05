@@ -12,7 +12,7 @@ using Mimi
     b                   = Parameter(index = [region])               # Quadratic coefficient
     c                   = Parameter(index = [region])               # Linear coefficient
     d                   = Parameter(index = [region])               # constant
-    optimal_mort        = Parameter(index = [region])               # Annual number of deaths under optimal temperature for each region
+    opt_mortality       = Parameter(index = [region])               # Annual number of deaths under optimal temperature for each region
     vsl                 = Parameter(index = [time, region])         # Value of a Statistical Life for each region and year
 
     # Variables to calculate
@@ -31,7 +31,7 @@ function run_timestep(s::Mortality, t::Int)
 
     v.RR_daily[t, :, :] = p.a .* temp.^3 .+ p.b .* temp.^2 .+ p.c .* temp .+ p.d    # calculate relative risk for each region for each day (vectorized)
     v.RR[t, :] = sum(v.RR_daily[t, :, :], 2) / length(d.days)   # Average to annual relative risk
-    v.deaths[t, :] = v.RR[t, :] .* p.optimal_mort
+    v.deaths[t, :] = v.RR[t, :] .* p.opt_mortality
 
     v.mortality_damages[t, :] = v.deaths[t, :] .* p.vsl[t, :]
 
