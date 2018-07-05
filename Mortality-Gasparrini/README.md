@@ -3,6 +3,7 @@
 You can run the component with "test/test_mortality.jl". This will run the component with the following made up data:
 - Daily temperatures are loaded from src/data_helper.jl
 - Cubic coefficients are defined in data/cubic_coefficients.csv
+- Pre-industrial relative risk is set to 1 in data/RR_preind.csv
 - Optimal mortality values are all set to 100, in data/opt_mortality.csv
 - VSL values are set to 1, in data/vsl.csv
 - a time index of 2010:10:2050
@@ -16,6 +17,7 @@ Internal model parameters:
 External parameters from Gasparrini research:
 - coefficients for the cubic relative risk functions for each region
 - mortality levels (number of deaths) at optimal temperature for each region 
+- pre-industrial relative risk
 
 Other external parameters needed:
 - VSL for all regions and years (in order to do economic valuation)

@@ -20,6 +20,7 @@ setindex(m, :days, 1:num_days)
 
 addcomponent(m, Mortality)
 setparameter(m, :Mortality, :daily_mean_temp, load_daily_temps(num_days))
+setparameter(m, :Mortality, :RR_preind, readcsv(joinpath(dirname(@__FILE__), "../data/RR_preind.csv"))[:,2])
 setparameter(m, :Mortality, :opt_mortality, readcsv(joinpath(dirname(@__FILE__), "../data/opt_mortality.csv"))[:,2])
 
 cubic_coeffs = readcsv("data/cubic_coefficients.csv")[2:end,2:end]
