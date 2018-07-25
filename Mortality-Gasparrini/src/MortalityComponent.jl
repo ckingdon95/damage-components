@@ -22,18 +22,16 @@ using Mimi
     deaths              = Variable(index = [time, region])          # Excess mortality (number of additional deaths) due to climate change
     mortality_damages   = Variable(index = [time, region])          # Economic valuation of excess mortality
 
-end
-
-function run_timestep(s::Mortality, t::Int)
-
-    v, p, d = s.Variables, s.Parameters, s.Dimensions
-
-    temp = p.daily_mean_temp[t, :, :]   # 9x365 array of daily temps for this year
-
-    v.RR_daily[t, :, :] = p.a .* temp.^3 .+ p.b .* temp.^2 .+ p.c .* temp .+ p.d    # calculate relative risk for each region for each day (vectorized)
-    v.RR[t, :] = sum(v.RR_daily[t, :, :], 2) / length(d.days)   # Average to annual relative risk
-    v.deaths[t, :] = (v.RR[t, :] .- p.RR_preind) .* p.opt_mortality
-
-    v.mortality_damages[t, :] = v.deaths[t, :] .* p.vsl[t, :]
-
+    # Define run timestep function
+    function run_timestep(p, v, d, t)
+    
+        temp = p.daily_mean_temp[t, :, :]   # 9x365 array of daily temps for this year
+    
+        v.RR_daily[t, :, :] = p.a .* temp.^3 .+ p.b .* temp.^2 .+ p.c .* temp .+ p.d    # calculate relative risk for each region for each day (vectorized)
+        v.RR[t, :] = sum(v.RR_daily[t, :, :], 2) / length(d.days)   # Average to annual relative risk
+        v.deaths[t, :] = (v.RR[t, :] .- p.RR_preind) .* p.opt_mortality
+    
+        v.mortality_damages[t, :] = v.deaths[t, :] .* p.vsl[t, :]
+    
+    end
 end
