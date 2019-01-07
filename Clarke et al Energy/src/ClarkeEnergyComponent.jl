@@ -39,7 +39,7 @@ using Mimi
 
             # Calculate demand per unit floor space
             v.d_H[t, r] = p.k_H[r] * (p.HDD[t, r] * p.eta[t, r] * p.R[t, r] - p.IG[t, r]) * (1 - exp(-log(2) / p.miu_H[r] * p.i[t, r] / v.P_H[t, r]))
-            v.d_C[t, r] = p.k_C[r] * (p.CDD[t, r] * p.eta[t, r] * p.R[t, r] - p.IG[t, r]) * (1 - exp(-log(2) / p.miu_C[r] * p.i[t, r] / v.P_C[t, r]))
+            v.d_C[t, r] = p.k_C[r] * (p.CDD[t, r] * p.eta[t, r] * p.R[t, r] + p.IG[t, r]) * (1 - exp(-log(2) / p.miu_C[r] * p.i[t, r] / v.P_C[t, r]))
             # v.d_H[t, r] = p.B_H[t, r] * p.HDD[t, r]   # simplified decomposition shown in eq. 7
             # v.d_C[t, r] = p.B_C[t, r] * p.CDD[t, r]   # simplified decomposition shown in eq. 8
 
