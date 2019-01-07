@@ -1,0 +1,20 @@
+From SI:
+
+Shell conductivity, eta:
+- "Rates of shell conductivity improvements of 0.5% per year for undustrialized countries are used, based on estimates of future shell efficiency improvements in the US (EIA 2007)"
+- "Higher rates of improvement are assumed for developing countries"
+- rates for all regions shown in Fig S3
+- need to request from Clark et al
+
+Building floor space calibration and projection
+- base year floorspace from lots of datasources, need to ask
+- "simple relationship between per capita floor space and per capita income"
+- Fig S5
+
+Parameters:
+- Table S2
+- miu: 
+    - Income level at mid-point of satiation curve
+    - derived from base year information after all other parameters have been specified
+- R:
+    - assumed constant in all regions and time periods
