@@ -18,3 +18,16 @@ Parameters:
     - derived from base year information after all other parameters have been specified
 - R:
     - assumed constant in all regions and time periods
+
+Calibration of k and miu:
+- satiation: set i to infinity, miu drops out, solve for k
+    - IG is set to 50% of the sum of all fuel consumption used  for "other" services, modified by a regional scaling factor related to HDD and CDD in that region
+    - satiated demand assumptions (d_H* and d_C*) were calculated using USA as benchmark
+        - USA are assumed to be 10% higher than the present demand levels in 2010 for both heating and cooling
+        - modify other regions
+        - d_H* and d_C* will be calculated outside of IAM 
+    - what is R??
+    - solve for k
+- after you have k, solve for miu based on current levels of income and demand
+- **solving for k and miu happen outside of and before Clarke et al climate simulations, and would be outside of and before IAM calculations
+- **but we may need to redo these calcualtions for different regions 

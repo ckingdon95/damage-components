@@ -1,0 +1,32 @@
+Questions for Clarke et al
+
+Floorspace
+1. Need base year floorspace data. Is it at the country level, then aggregated to GCAM regions?
+2. What is the functional form of the relationship between floorspace and income? How did you calibrate region-specific parameeters for this relationship, and can they be shared with us?
+
+Prices
+3. Total price is shown as a weighted average of prices and demands of individual technologies (eq. 5 and 6). How do you calculate the demands for individual technologies (do you use technology-specific versions of eq. 3 and 4, or something else)?
+4. How do you calculate/project prices into the future? 
+
+Eta; building shell thermal conductance 
+5. Should I calcluate this endogenously, from an improvement rate (around 0.5% but different for different regions), or should I just give the timeseries of eta values as an exogenous parameter?
+6. Where did the data used for these rates come from? Are they at the country level or region level?
+
+Parameter calibration
+7. miu and k have different values for different regions right?
+8. R is "assumed; set constant in all regions and time periods". What values were used and where did this data come from?
+9. IG is derived from other energy consumption. Does this happen at all steps within GCAM, or external to GCAM?
+
+General
+10. Why are the impacts higher in the 8.5 scenario than in the 4.5 scenario for same temperature points? (Is it because the temperature points are reached sooner in the 8.5 scenario, at lower levels of satiation, so the marginal diff is greater?)
+11. The simpler decomposition of demand shown in eq. 7 and 8 with the behavioral params B_H and B_C is just used in analysis after the fact right? Could we actually just calibrate these parameters and then just use demand as a function of HDD and CDD? This wouldn't work because it wouldn't take into account income effects right?
+
+
+
+Internal Questions
+
+1. Currently the component I wrote includes both heating and cooling (same equations, different param values). Alternately, I could simplify the component to only calculate either heating or cooling, then add two of the components to the model (one for heating and one for cooling). I would have to add additional component(s) anyway if we calculate residential and commercial separately. 
+    - pros: less repetative heating/cooling specific equations within the defcomp
+    - cons: potentially less clear; would have multiple components in the model for just Clarke building energy; would have to do floorspace and eta calculations within each component, which is repetitive (unless I have a separate small component for building calculations, that then gets connected to each Energy component). Also, with new composite component structures, I could have the multiple typse of building energy components all be within one outer Clarke component.
+2. miu and k are solved for outside of the IAM, but we will need to redo the calibration if we use different regions.
+3. Alternatively we could try to just fit a regression of percent impact on temp from their output results, but as shown in fig 12 and 13, it's not just a function of temperature 
